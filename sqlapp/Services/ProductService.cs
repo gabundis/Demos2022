@@ -3,23 +3,25 @@ using sqlapp.Models;
 
 namespace sqlapp.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private static readonly string db_source = "gabundisaz204.database.windows.net";
-        private static readonly string db_user = "gabundis";
-        private static readonly string db_password = "Gsam_8906*";
-        private static readonly string db_database = "az204db";
+        private readonly IConfiguration _configuration;
+
+        public ProductService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         private SqlConnection GetConnection()
         {
-            var _builder = new SqlConnectionStringBuilder
-            {
-                DataSource = db_source,
-                UserID = db_user,
-                Password = db_password,
-                InitialCatalog = db_database
-            };
-            return new SqlConnection(_builder.ConnectionString);
+            //var _builder = new SqlConnectionStringBuilder
+            //{
+            //    DataSource = db_source,
+            //    UserID = db_user,
+            //    Password = db_password,
+            //    InitialCatalog = db_database
+            //};
+            return new SqlConnection(_configuration.GetConnectionString("SQLConnection"));
         }
 
         public List<Product> GetProducts()
@@ -35,7 +37,7 @@ namespace sqlapp.Services
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                while(reader.Read())
+                while (reader.Read())
                 {
                     Product product = new()
                     {
