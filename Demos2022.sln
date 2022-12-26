@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapp", "webapp\webapp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRReactive", "SignalRReactive\SignalRReactive.csproj", "{E074F957-B8C2-49DB-AF23-A5F45E7E4730}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqlapp", "sqlapp\sqlapp.csproj", "{59762EF5-C5BE-4915-B36D-D4B898FFF68A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlapp", "sqlapp\sqlapp.csproj", "{59762EF5-C5BE-4915-B36D-D4B898FFF68A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlfunction", "sqlfunction\sqlfunction.csproj", "{65885061-5682-4CAC-8801-3F4AB7E31CA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClient", "SignalRClient\SignalRClient.csproj", "{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{59762EF5-C5BE-4915-B36D-D4B898FFF68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59762EF5-C5BE-4915-B36D-D4B898FFF68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59762EF5-C5BE-4915-B36D-D4B898FFF68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65885061-5682-4CAC-8801-3F4AB7E31CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65885061-5682-4CAC-8801-3F4AB7E31CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65885061-5682-4CAC-8801-3F4AB7E31CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65885061-5682-4CAC-8801-3F4AB7E31CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
