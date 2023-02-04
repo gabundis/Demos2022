@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlfunction", "sqlfunction\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClient", "SignalRClient\SignalRClient.csproj", "{0A26E0BA-33DA-42BC-824C-0354FA57EB3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlobApp", "BlobApp\BlobApp.csproj", "{087E1AA9-8CCA-4E8D-BF6C-B0FD3EA58FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlobApp", "BlobApp\BlobApp.csproj", "{087E1AA9-8CCA-4E8D-BF6C-B0FD3EA58FD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorage", "TableStorage\TableStorage.csproj", "{334E5E6B-C1BC-4757-BE6F-41B35520F694}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{087E1AA9-8CCA-4E8D-BF6C-B0FD3EA58FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{087E1AA9-8CCA-4E8D-BF6C-B0FD3EA58FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{087E1AA9-8CCA-4E8D-BF6C-B0FD3EA58FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334E5E6B-C1BC-4757-BE6F-41B35520F694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334E5E6B-C1BC-4757-BE6F-41B35520F694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334E5E6B-C1BC-4757-BE6F-41B35520F694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334E5E6B-C1BC-4757-BE6F-41B35520F694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
