@@ -7,7 +7,9 @@ using Microsoft.Azure.Cosmos;
 string cosmosEndpointUri = "https://az204-cosmos-db-core.documents.azure.com:443/";
 string cosmosDBKey = "HVXL2r1ZN6QFsiFmAgNCcE7Zyct075oECjjwDmINIlb1dUVa0B6j3Z9UAFe8cpX7Or3nebSo6gjHACDbnID97g==";
 string databaseName = "appdb";
-string containerName = "Customers";
+string containerName = "Orders";
+string monitorContainerName = "Orders";
+string leaseContainerName = "leases";
 
 #region Create Database and Container
 
@@ -53,7 +55,7 @@ async Task AddOrder(string orderId, string category, int quantity)
 
     Order order = new()
     {
-        id = Guid.NewGuid().ToString(),
+        //id = Guid.NewGuid().ToString(),
         orderId = orderId,
         category = category,
         quantity = quantity
@@ -236,7 +238,7 @@ async Task UpdateOrder()
         FeedResponse<Order> orders = await feedIterator.ReadNextAsync();
         foreach (Order order in orders)
         {
-            id = order.id;
+            //id = order.id;
             category = order.category;
         }
     }
@@ -329,7 +331,7 @@ async Task DeleteItem()
         FeedResponse<Order> orders = await feedIterator.ReadNextAsync();
         foreach (Order order in orders)
         {
-            id = order.id;
+            //id = order.id;
             category = order.category;
         }
     }
@@ -342,5 +344,102 @@ async Task DeleteItem()
 }
 
 #endregion Delete items
+
+#region Stored Procedure
+
+//await CallStoredProcedure();
+//await CreateItem();
+
+async Task CallStoredProcedure()
+{
+    CosmosClient cosmosClient = new(cosmosEndpointUri, cosmosDBKey);
+    Container container = cosmosClient.GetContainer(databaseName, containerName);
+
+    dynamic[] orderItems = new dynamic[]
+    {
+        new
+        {
+            id = Guid.NewGuid().ToString(),
+            orderId = "O1",
+            category = "Laptop",
+            quantity = 100
+        },
+        new
+        {
+            id = Guid.NewGuid().ToString(),
+            orderId = "O5",
+            category = "Laptop",
+            quantity = 300
+        },
+        new
+        {
+            id = Guid.NewGuid().ToString(),
+            orderId = "O6",
+            category = "Laptop",
+            quantity = 400
+        },
+
+    };
+
+    var result = await container.Scripts.ExecuteStoredProcedureAsync<string>("createItems", new PartitionKey("Laptop"), new[] { orderItems });
+    Console.WriteLine(result);
+}
+
+async Task CreateItem()
+{
+    CosmosClient cosmosClient = new(cosmosEndpointUri, cosmosDBKey);
+    Container container = cosmosClient.GetContainer(databaseName, containerName);
+
+    dynamic orderItem =
+        new
+        {
+            id = Guid.NewGuid().ToString(),
+            orderId = "O1",
+            category = "Laptop"
+        };
+
+    await container.CreateItemAsync(orderItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "validateItem" } });
+    Console.WriteLine("Item has been inserted");
+}
+
+#endregion Stored Procedure
+
+#region Change Feed
+
+await StartChangeProcessor();
+
+async Task StartChangeProcessor()
+{
+    CosmosClient cosmosClient = new(cosmosEndpointUri, cosmosDBKey);
+
+    Container leaseContainer = cosmosClient.GetContainer(databaseName, leaseContainerName);
+
+    ChangeFeedProcessor changeFeedProcessor = cosmosClient.GetContainer(databaseName, monitorContainerName)
+        .GetChangeFeedProcessorBuilder<Order>(processorName: "ManageChanges", onChangesDelegate: ManageChanges)
+        .WithInstanceName("appHost")
+        .WithLeaseContainer(leaseContainer)
+        .Build();
+
+    Console.WriteLine("Starting the Change Feed Processor");
+    await changeFeedProcessor.StartAsync();
+    Console.Read();
+    await changeFeedProcessor.StopAsync();
+}
+
+static async Task ManageChanges(
+    ChangeFeedProcessorContext context,
+    IReadOnlyCollection<Order> itemCollection,
+    CancellationToken cancellationToken
+)
+{
+    foreach (Order item in itemCollection)
+    {
+        Console.WriteLine($"Id {item.id}");
+        Console.WriteLine($"Order Id {item.orderId}");
+        Console.WriteLine($"Creation time {item.creationTime}");
+    }
+}
+
+#endregion Change Feed
 
 #endregion CosmosDB

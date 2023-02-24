@@ -1,19 +1,19 @@
 ﻿using Azure;
 using Azure.Data.Tables;
 
-string connectionString = "DefaultEndpointsProtocol=https;AccountName=gs204storageaccount;AccountKey=TK9Rr2rrI5GUeeKXX/B8oMV/QtQVCI3aCpV2WogNnszbffvk6P4PO0+9fIgBec7vzXTKOUYREVCp+AStXFeQDg==;EndpointSuffix=core.windows.net";
+string connectionString = "DefaultEndpointsProtocol=https;AccountName=az204-cosmos-table-api;AccountKey=aYB490SvmMmHSEBnSxOhx2sghaem14cjjWutF4c6SUYtrb0Pk34cA7h9k9lSNAwP9dsynVZJWlN8ACDbOSCtLQ==;TableEndpoint=https://az204-cosmos-table-api.table.cosmos.azure.com:443/;";
 string tableName = "Orders";
 
-//AddEntity("O1", "Mobile", 100);
-//AddEntity("O2", "Laptop", 50);
-//AddEntity("O3", "Desktop", 70);
-//AddEntity("O4", "Laptop", 200);
+AddEntity("O1", "Mobile", 100);
+AddEntity("O2", "Laptop", 50);
+AddEntity("O3", "Desktop", 70);
+AddEntity("O4", "Laptop", 200);
 
 //QueryEntity("Laptop");
 
 //DeleteEntity("Laptop", "O2");
 
-UpdateEntity("O3", "Desktop", 300);
+//UpdateEntity("O3", "Desktop", 300);
 
 void AddEntity(string orderId, string category, int quantity)
 {
