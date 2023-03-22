@@ -11,55 +11,61 @@ namespace sqlapp.Services
     public class ProductService : IProductService
     {
         private readonly IConfiguration _configuration;
-        private readonly IFeatureManager _featureManager;
+        //private readonly IFeatureManager _featureManager;
 
-        public ProductService(IConfiguration configuration, IFeatureManager featureManager)
+        public ProductService(
+            IConfiguration configuration
+            //IFeatureManager featureManager
+        )
         {
             _configuration = configuration;
-            _featureManager = featureManager;
+            //_featureManager = featureManager;
         }
 
-        public async Task<bool> IsBeta()
-        {
-            if (await _featureManager.IsEnabledAsync("beta"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        //private SqlConnection GetConnection()
+        //public async Task<bool> IsBeta()
         //{
-        //    //var _builder = new SqlConnectionStringBuilder
-        //    //{
-        //    //    DataSource = db_source,
-        //    //    UserID = db_user,
-        //    //    Password = db_password,
-        //    //    InitialCatalog = db_database
-        //    //};
-        //    return new SqlConnection("Server=tcp:gabundisaz204.database.windows.net,1433;Initial Catalog=az204db;Persist Security Info=False;User ID=gabundis;Password=Gsam_8906*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        //    //return new SqlConnection(_configuration.GetConnectionString("SQLConnection")); //WebApp Configuration
-        //    //return new SqlConnection(_configuration["SQLConnection"]); // Azure Configuration
+        //    if (await _featureManager.IsEnabledAsync("beta"))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
         //}
 
-        private MySqlConnection GetConnection()
+        private SqlConnection GetConnection()
         {
-            return new MySqlConnection("Server=localhost;Port=3306;Database=az204db;Uid=root;Pwd=Gsam_8906*;SslMode=Preferred;");
+            //var _builder = new SqlConnectionStringBuilder
+            //{
+            //    DataSource = db_source,
+            //    UserID = db_user,
+            //    Password = db_password,
+            //    InitialCatalog = db_database
+            //};
+            //return new SqlConnection("Server=tcp:gabundisaz204.database.windows.net,1433;Initial Catalog=az204db;Persist Security Info=False;User ID=gabundis;Password=Gsam_8906*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //return new SqlConnection(_configuration.GetConnectionString("SQLConnection")); //WebApp Configuration
+            return new SqlConnection(_configuration["SQLConnection"]); // Azure Configuration
         }
+
+        //private MySqlConnection GetConnection()
+        //{
+        //    return new MySqlConnection("Server=localhost;Port=3306;Database=az204db;Uid=root;Pwd=Gsam_8906*;SslMode=Preferred;");
+        //}
 
         public List<Product> GetProducts()
         {
-            MySqlConnection conn = GetConnection();
+            //MySqlConnection conn = GetConnection();
+            SqlConnection conn = GetConnection();
             var products = new List<Product>();
             string statement = "SELECT ProductID, ProductName, Quantity FROM Products";
             conn.Open();
 
-            using MySqlCommand cmd = new(statement, conn);
+            //using MySqlCommand cmd = new(statement, conn);
+            using SqlCommand cmd = new(statement, conn);
 
-            using MySqlDataReader reader = cmd.ExecuteReader();
+            //using MySqlDataReader reader = cmd.ExecuteReader();
+            using SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {

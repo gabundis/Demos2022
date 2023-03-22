@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB", "CosmosDB\Cosmos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyapp", "Keyapp\Keyapp.csproj", "{AD195B05-0A9B-4C4E-8D4D-8B51348BD7F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApp", "AuthApp\AuthApp.csproj", "{5FBACB28-BF41-4937-9F2E-1812A2150F43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthApp", "AuthApp\AuthApp.csproj", "{5FBACB28-BF41-4937-9F2E-1812A2150F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductAPI", "ProductAPI\ProductAPI.csproj", "{34BBC7E1-504A-49A1-BE27-681421E5FF11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{5FBACB28-BF41-4937-9F2E-1812A2150F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FBACB28-BF41-4937-9F2E-1812A2150F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FBACB28-BF41-4937-9F2E-1812A2150F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

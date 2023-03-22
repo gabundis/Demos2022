@@ -8,6 +8,6 @@ namespace sqlapp.Services
 
         //Task<List<Product>> GetProducts();
 
-        Task<bool> IsBeta();
+        //Task<bool> IsBeta();
     }
 }

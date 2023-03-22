@@ -18,7 +18,7 @@ namespace sqlapp.Pages
 
         public void OnGet()
         {
-            IsBeta = _productService.IsBeta().Result;
+            //IsBeta = _productService.IsBeta().Result;
             //ProductService productService = new ProductService();
             Products = _productService.GetProducts();
             //Products = _productService.GetProducts().GetAwaiter().GetResult();
