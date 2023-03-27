@@ -20,8 +20,8 @@ namespace sqlapp.Pages
         {
             //IsBeta = _productService.IsBeta().Result;
             //ProductService productService = new ProductService();
-            Products = _productService.GetProducts();
-            //Products = _productService.GetProducts().GetAwaiter().GetResult();
+            //Products = _productService.GetProducts();
+            Products = _productService.GetProducts().GetAwaiter().GetResult();
         }
     }
 }

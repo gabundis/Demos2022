@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyapp", "Keyapp\Keyapp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthApp", "AuthApp\AuthApp.csproj", "{5FBACB28-BF41-4937-9F2E-1812A2150F43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductAPI", "ProductAPI\ProductAPI.csproj", "{34BBC7E1-504A-49A1-BE27-681421E5FF11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI", "ProductAPI\ProductAPI.csproj", "{34BBC7E1-504A-49A1-BE27-681421E5FF11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureCacheRedis", "AzureCacheRedis\AzureCacheRedis.csproj", "{1D796BF7-4AA8-433C-9BC0-271D967321DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageQueue", "StorageQueue\StorageQueue.csproj", "{587057E9-F509-4D61-B116-C95DD0578EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34BBC7E1-504A-49A1-BE27-681421E5FF11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D796BF7-4AA8-433C-9BC0-271D967321DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D796BF7-4AA8-433C-9BC0-271D967321DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D796BF7-4AA8-433C-9BC0-271D967321DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D796BF7-4AA8-433C-9BC0-271D967321DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587057E9-F509-4D61-B116-C95DD0578EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587057E9-F509-4D61-B116-C95DD0578EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587057E9-F509-4D61-B116-C95DD0578EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587057E9-F509-4D61-B116-C95DD0578EBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

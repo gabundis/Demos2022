@@ -1,27 +1,30 @@
-using Microsoft.ApplicationInsights.DependencyCollector;
-using Microsoft.FeatureManagement;
+//using Microsoft.ApplicationInsights.DependencyCollector;
+//using Microsoft.FeatureManagement;
 using sqlapp.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = "Endpoint=https://bnextaz204config.azconfig.io;Id=M34V-l5-s0:UJzJRIqNX/9fNsoFvFZJ;Secret=S21/HNtwp9cYoWkLJzjGWYUlE6yOoyxEqmmY807AjJc=";
+string connectionString = "Endpoint=https://bnextaz204config.azconfig.io;Id=M34V-l5-s0:UJzJRIqNX/9fNsoFvFZJ;Secret=S21/HNtwp9cYoWkLJzjGWYUlE6yOoyxEqmmY807AjJc=";
 
 builder.Host.ConfigureAppConfiguration(app =>
 {
     app.AddAzureAppConfiguration(options =>
         options.Connect(connectionString));
-    //app.AddAzureAppConfiguration(options =>
-    //    options.Connect(connectionString).UseFeatureFlags());
+        //.UseFeatureFlags());
 });
 
+ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(builder.Configuration["RedisConnection"]);
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
 builder.Services.AddTransient<IProductService, ProductService>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-//builder.Services.AddFeatureManagement();
-builder.Services.AddApplicationInsightsTelemetry();
 
-builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
+//builder.Services.AddFeatureManagement();
+//builder.Services.AddApplicationInsightsTelemetry();
+//builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
 var app = builder.Build();
 
